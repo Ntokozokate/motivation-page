@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>Motivational Quote Landing Page</title>
+    <style>
+      :root {
+        --main-branding-color: #b016f7;
+        --main-branding-color-one: #79398a;
+        --main-branding-color-one1: #7b049caa;
+        --main-branding-color-two: #1f0227;
+        --main-branding-color-three: #050303;
+        --main-color-1: #fff;
+      }
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-family: "Shantell Sans", serif;
+        font-optical-sizing: auto;
+      }
+      h2 {
+        font-family: "Sniglet", serif;
+      }
+      .h1-text {
+        font-weight: 600;
+        margin-top: 1em;
+        font-size: 3em;
+      }
+      .container-fluid {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        background-image: url("https://i.postimg.cc/4xQKr4dp/7af47053933163f1f291d18633e0d486.jpg");
+        background-size: cover;
+        background-position: center;
+        height: auto;
+      }
+      .blur-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+      .content {
+        position: relative;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        padding: 20px;
+        color: #fff;
+      }
+      .paragraph-section,
+      .quote-section {
+        padding: 20px;
+      }
+      .flip-container {
+        perspective: 1000px;
+        width: 100%;
+        max-width: 400px;
+        height: 300px;
+        margin: 50px auto;
+      }
+      .flipper {
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.6s;
+      }
+      .flip-container:hover .flipper {
+        transform: rotateY(180deg);
+      }
+      .front,
+      .back {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        backface-visibility: hidden;
+      }
+      .front {
+        background-color: rgba(0, 0, 0, 0.365);
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+      }
+      .back {
+        background: none;
+        transform: rotateY(180deg);
+      }
+      @media (max-width: 600px) {
+        .fliper .back .eloquentjavascript-img img {
+          max-width: 200px;
+        }
+      }
+      /*navigation styling*/
+      .navbar {
+        overflow: hidden;
+        left: 0;
+      }
+      .navbar a {
+        float: left;
+        display: block;
+        color: whitesmoke;
+        text-decoration: none;
+        font-size: 2em;
+        font-weight: 600;
+        position: fixed;
+        z-index: 1;
+        background-color: black;
+        width: 100%;
+        font-family: sans-serif;
+        padding-left: 40px;
+        margin-top: 20px;
+        left: 0;
+      }
+      .navbar a:hover {
+        color: #a85dca;
+      }
+
+      /* Modal stylig */
+      .button {
+        background-color: #633a8bc8;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.665);
+        padding-top: 60px;
+      }
+      .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px;
+        width: 85%;
+        background-color: #7532b7e8;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .modal-container {
+        text-align: center;
+      }
+      /*end of modal*/
+      /*paragraph styling*/
+      .explanation {
+        text-align: center;
+        background-color: #ffffffca;
+        color: #0c0c0cd5;
+        padding: 50px;
+        margin: 0;
+        border-radius: 1em;
+      }
+      .explanation h1 {
+        font-weight: 800;
+      }
+      .explanation p {
+        font-weight: 500;
+        line-height: 2em;
+      }
+      @media (max-width: 600px) {
+        .explanation p span {
+          display: none;
+        }
+      }
+
+      .quote {
+        background-color: transparent;
+        border: 1px solid#ddd;
+        background-color: #000000ca;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 1em;
+        transition: background 0.5, transform 0.5s;
+        box-shadow: 3px 3px 50px black, 3px 3px 50px black;
+      }
+      .quotes-container-section {
+        position: relative;
+      }
+      .more-info {
+        text-align: center;
+        padding: 30px;
+      }
+      .btn-box {
+        display: inline-block;
+        padding: 12px 28px;
+        background: var(--main-branding-color);
+        border-radius: 40px;
+        font-size: 16px;
+        color: #060527;
+        letter-spacing: 1px;
+        text-decoration: none;
+        font-weight: 600;
+
+        box-shadow: 0 0 5px var(--main-branding-color),
+          0 0 10px var(--main-branding-color);
+      }
+      .btn-box:hover {
+        box-shadow: 0 0 5px var(--main-branding-color),
+          0 0 025px var(--main-branding-color),
+          0 0 100px var(--main-branding-color),
+          0 0 200px var(--main-branding-color);
+      }
+      footer {
+        z-index: 1;
+        background-color: black;
+        text-align: center;
+      }
+      .contact-icons i {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        background: transparent;
+        border: 2px solid var(--main-branding-color);
+        border-radius: 650%;
+        font-size: 20px;
+        color: var(--main-branding-color);
+        text-decoration: none;
+        margin: 30px 15px 30px 0;
+      }
+      .contact-icons i:hover {
+        background: var(--main-branding-color);
+        color: #051129;
+        box-shadow: 0 0 20px var(--main-branding-color);
+      }
+      .last-text {
+        opacity: 60%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="navbar">
+        <a href="https://kate-nm-personal-website.netlify.app/" target="_blank"
+          >kate-nm</a
+        >
+      </div>
+
+      <div class="blur-overlay"></div>
+
+      <div class="content">
+        <div class="container">
+          <h1 class="text-center text-dark h1-text">
+            My motivational quote page
+          </h1>
+          <div class="row align-items-center">
+            <div class="col-md-6 paragraph-section text-center text-md-left">
+              <h2>Very funny and personally motivational</h2>
+              <small
+                ><em>
+                  "There are those that will say many terrible things about
+                  Javascript. Many of these things are true"</em
+                ></small
+              >
+
+              <br />
+              <br />
+
+              <div class="modal-container">
+                <button id="myBtn" class="button">
+                  About Eloquent JavaScript
+                </button>
+                <div id="myModal" class="modal" aria-hidden="true">
+                  <div class="row"></div>
+                  <div class="modal-content">
+                    <span class="close" id="closeBtn">&times;</span>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <h2>Eloquent JavaScript, 4th Edition</h2>
+                        <p><strong>Author:</strong> Marijn Haverbeke</p>
+                        <p><strong>Publisher:</strong> No Starch Press</p>
+                        <p>
+                          <strong>Publication Date:</strong> November 5, 2024
+                        </p>
+                        <p>
+                          <strong>Description:</strong> This book is a
+                          comprehensive guide to JavaScript, covering both the
+                          fundamentals and advanced topics. It includes
+                          practical examples and projects to help you master the
+                          language.
+                        </p>
+                      </div>
+                      <div class="col-sm-6 eloquentjavascript-img">
+                        <div>
+                          <img
+                            src="https://i.postimg.cc/KvQ2xcpF/eloquentjavascript.jpg"
+                            alt="Eloquent JavaScript Cover"
+                            style="width: 265px"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 quote-section text-center">
+              <div class="flip-container">
+                <div class="flipper">
+                  <div class="front">
+                    <h3>
+                      "There are those that will say many terrible things about
+                      Javascript. Many of these things are true"
+                    </h3>
+                    <br />
+                    <br />
+                    <em>-- Marijn Haverbeke</em>
+                  </div>
+                  <div class="back">
+                    <img
+                      src="https://i.postimg.cc/yNFMtyJJ/0001b82c2a608e52a0562787b3ed5590-removebg-preview.png"
+                      alt="Back Image"
+                      style="width: 100%; height: 100%; object-fit: cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="explanation">
+          <h1>My take on the quote</h1>
+          <p>
+            As I embarked on my journey to learn JavaScript, I stumbled upon a
+            quote in "Eloquent JavaScript" that instantly resonated with me
+            <span
+              >: "There are those that will tell you a lot of bad things about
+              JavaScript. Many of those things are true."</span
+            >
+            Initially, I found the blunt honesty amusing. However, it also
+            served as a powerful motivator. It reminded me that while
+            JavaScript, like any language, has its quirks and challenges, these
+            hurdles are a natural part of the learning process.
+            <span class="more-content">
+              This candid acknowledgment of JavaScript's imperfections made me
+              brace myself mentally for the ups and downs of my learning
+              journey. Rather than being dissuaded by potential difficulties, I
+              felt a renewed sense of determination to master the language,
+              understanding that the path to proficiency involves embracing both
+              its strengths and its flaws. This quote became a source of
+              inspiration, encouraging me to persevere with an open mind and a
+              resilient spirit.</span
+            >
+            <span class="show-more bg-dark text-light" onclick="toggleContent()"
+              >Read More</span
+            >
+          </p>
+        </div>
+        <div>
+          <div class="container my-4 quotes-container-section">
+            <h1 class="text-center">More quotes from Haverbeke</h1>
+            <div class="row">
+              <div class="col-md-6 col-lg-3">
+                <div class="quote">
+                  <p>
+                    "Learning is hard work, but everything you learn is yours
+                    and will make subsequent learning easier." - Marijn
+                    Haverbeke
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="quote">
+                  <p>
+                    "The programmer who refuses to keep exploring will surely
+                    stagnate, forget his joy, lose the will to program (and
+                    become a manager)." - Marijn Haverbeke
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="quote">
+                  <p>
+                    "The art of programming is the skill of controlling
+                    complexity." "Higher-order functions allow us to abstract
+                    over actions, not just values." - Marijn Haverbeke
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="quote">
+                  <p>
+                    "You should imagine variables as tentacles, rather than
+                    boxes. They do not contain values; they grasp them—two
+                    variables can refer to the same value." - Marijn Haverbeke
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="more-info">
+            <a
+              href="https://kate-nm-personal-website.netlify.app/"
+              target="_blank"
+              class="btn-box"
+              >More about Me</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div></div>
+    <footer>
+      <div class="contact-icons">
+        <a href="https://www.facebook.com/ntokozokate.moyo.98/" target="_blank"
+          ><i class="bx bxl-facebook-circle"></i
+        ></a>
+        <a href="https://wa.me/+263771558714?text=Hello Ntokozo"
+          ><i class="bx bxl-whatsapp"></i
+        ></a>
+        <a href="https://www.instagram.com/ntokozokate/" target="_blank"
+          ><i class="bx bxl-instagram"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/kate-moyo-1855b6316"
+          target="_blank"
+          ><i class="bx bxl-linkedin"></i
+        ></a>
+      </div>
+      <small class="text-light last-text">
+        This project was coded by <span><a href="">Ntokozo</a></span> and is
+        open sourced on <span><a href="">Github</a></span>
+      </small>
+    </footer>
+    <script>
+      var modal = document.getElementById("myModal");
+      var btn = document.getElementById("myBtn");
+      var span = document.getElementById("closeBtn")[0];
+
+      // open the modal
+      btn.addEventListener("click", () => {
+        modal.style.display = "block";
+        modal.setAttribute("aria-hidden", "false");
+        closeBtn.focus();
+      });
+      //close the modal and back to orgn
+      closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+        modal.setAttribute("aria-hidden", "true");
+        btn.focus();
+      });
+      window.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          modal.style.display = "none";
+          modal.setAttribute("aria-hidden", "true");
+        }
+      });
+      function toggleContent() {
+        const moreContent = document.querySelector(".more-content");
+        const showMore = document.querySelector(".show-more");
+        if (moreContent.style.display === "none") {
+          moreContent.style.display = "inline";
+          showMore.textContent = "Read Less";
+        } else {
+          moreContent.style.display = "none";
+          showMore.textContent = "Read More";
+        }
+      }
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const moreContent = document.querySelector(".more-content");
+        if (moreContent) {
+          moreContent.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
